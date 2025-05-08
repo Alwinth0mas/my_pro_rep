@@ -5,7 +5,7 @@ from . models import Question, Choice
 from . serializers import QuestionSerializer, ChoiceSerializer
 
 def index(request):
-    return HttpResponse("inside home page")
+    return render(request, 'my_app/index.html')
 
 
 class QuestionSerializerView(generics.ListCreateAPIView):

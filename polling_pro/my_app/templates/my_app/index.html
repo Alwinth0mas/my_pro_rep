@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Questions</h1>
+    <ul id="questions"></ul>
+
+    <h1>Choicies</h1>
+    <ul id="choices"></ul>
+
+    <script>
+        // Fetch Questions
+        fetch('/api/questions/')
+            .then(response => response.json())
+            .then(data => {
+                const questionList = document.getElementById('questions');
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.name}: ${item.description}`;
+                    itemsList.appendChild(li);
+                });
+            });
+
+        // Fetch categories
+        fetch('/api/choices/')
+            .then(response => response.json())
+            .then(data => {
+                const categoryList = document.getElementById('choices');
+                data.forEach(cat => {
+                    const li = document.createElement('li');
+                    li.textContent = `${cat.title}: ${cat.detail}`;
+                    categoryList.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>
